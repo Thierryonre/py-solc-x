@@ -448,9 +448,7 @@ def install_solc(
         except KeyError:
             raise SolcInstallationError(f"Solc binary for v{version} is not available for this OS")
 
-        if os_name == "linux":
-            _install_solc_unix(version, filename, show_progress, solcx_binary_path)
-        elif os_name == "macosx":
+        if os_name in ["linux", "macosx"]:
             _install_solc_unix(version, filename, show_progress, solcx_binary_path)
         elif os_name == "windows":
             _install_solc_windows(version, filename, show_progress, solcx_binary_path)

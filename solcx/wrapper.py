@@ -90,11 +90,7 @@ def solc_wrapper(
     Popen
         Subprocess object used to call `solc`
     """
-    if solc_binary:
-        solc_binary = Path(solc_binary)
-    else:
-        solc_binary = install.get_executable()
-
+    solc_binary = Path(solc_binary) if solc_binary else install.get_executable()
     solc_version = _get_solc_version(solc_binary)
     command: List = [str(solc_binary)]
 
